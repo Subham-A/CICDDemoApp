@@ -21,6 +21,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - run: pwd
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
@@ -37,6 +38,7 @@ jobs:
       id: docker_build
       uses: docker/build-push-action@v2
       with:
+        context: backend/
         push: true
         tags: subham/cicdbackend:latest
         file: backend/Dockerfile

@@ -25,9 +25,8 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-        working-directory: ./backend
-    - working-directory: ./backend
+    - name: Install dependencies
+      working-directory: ./backend
       run: npm ci
     - name: Login to DockerHub
       uses: docker/login-action@v1 
@@ -40,4 +39,4 @@ jobs:
       with:
         push: true
         tags: subham/cicdbackend:latest
-        working-directory: ./backend
+        file: ./backend
